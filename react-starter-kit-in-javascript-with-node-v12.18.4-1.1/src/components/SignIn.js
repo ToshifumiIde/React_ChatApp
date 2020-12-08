@@ -101,12 +101,15 @@ export default function SignIn({setName}) {
             label="Remember me"
           /> */}
           <Button
-            type="submit"
+            type="button"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
             disabled={disabled}
+            onClick={()=>{
+              setName(string);
+            }}
           >
             はじめる
           </Button>
