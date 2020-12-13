@@ -1,13 +1,24 @@
 import firebase from "firebase";
 
+
+const {
+  REACT_APP_FIREBASE_API_KEY,
+  REACT_APP_FIREBASE_AUTH_DOMAIN,
+  REACT_APP_FIREBASE_PROJECT_ID,
+  REACT_APP_FIREBASE_STORAGE_BUCKET,
+  REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  REACT_APP_FIREBASE_APP_ID,
+  REACT_APP_FIREBASE_MEASUREMENT_ID
+} = process.env;
+
 const firebaseConfig = {
-  apiKey: "AIzaSyAdyt3l_xYSwnsiFtHFPkx66Bp2t-AlO8k",
-  authDomain: "toshifumiide-idobatakaigi.firebaseapp.com",
-  projectId: "toshifumiide-idobatakaigi",
-  storageBucket: "toshifumiide-idobatakaigi.appspot.com",
-  messagingSenderId: "211846729017",
-  appId: "1:211846729017:web:45c143e199aab9bf926ce8",
-  measurementId: "G-MXMDMXKB6J"
+  apiKey: REACT_APP_FIREBASE_API_KEY,
+  authDomain: REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId:REACT_APP_FIREBASE_APP_ID,
+  measurementId: REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
 //最初に初期化設定を実行
