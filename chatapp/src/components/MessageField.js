@@ -2,7 +2,7 @@ import React ,{useState} from 'react';
 import { TextField } from "@material-ui/core";
 import { pushMessage } from "../firebase";
 
-const MessageField = ({name , text ,setText}) => {
+const MessageField = ({ name , text ,setText}) => {
   console.log({text})
   const [isComposed , setIsComposed] = useState(false);
 
