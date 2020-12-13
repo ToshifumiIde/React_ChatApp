@@ -10,10 +10,15 @@ const firebaseConfig = {
   measurementId: "G-MXMDMXKB6J"
 };
 
+//最初に初期化設定を実行
 firebase.initializeApp(firebaseConfig);
+//次にデータベースを丸ごと参照する
 const database = firebase.database();
-const messageRef = database.ref("messages");
+//特定の領域（今回messages）に対するリファレンス（参照）を作成する
+const messagesRef = database.ref("messages");
 
+//messageリファレンスに、{name , text}のオブジェクトを追加(push)する関数
 export const pushMessage = ({name , text}) => {
-  messageRef.push({ name , text });
+  messagesRef.push({ name , text });
 };
+//このpushMessageメソッドはMessageFieldコンポーネントで使う
