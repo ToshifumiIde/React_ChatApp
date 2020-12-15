@@ -9,7 +9,6 @@ console.log({config});
 export default () => {
 
   const [name ,setName ] = useState("");
-  // console.log(name);
   if(config.signInEnabled && name === ""){
     return <SignIn setName={setName}/>;
   } else {

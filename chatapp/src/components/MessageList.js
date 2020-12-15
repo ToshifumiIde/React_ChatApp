@@ -1,13 +1,16 @@
-import React, {useState , useEffect} from 'react'
+import React, { useState , useEffect } from 'react';
+import { List } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import MessageItem from "./MessageItem";
 import { messagesRef } from "../firebase";
 
 const useStyles = makeStyles({
   root:{
     gridRow:1,
+    overflow:"auto",
+    width:'100%',
   },
 });
-
 
 const MessageList = () => {
   const classes = useStyles();
@@ -16,7 +19,7 @@ const MessageList = () => {
   useEffect(()=>{
     messagesRef
     .orderByKey()
-    .limitToLast(3)
+    .limitToLast(15)
     .on("value",(snapshot) => {
     const messages = snapshot.val();//中身を取り出すにはval()メソッドを使用
     if (messages === null) return;//中身がからであった場合、後の処理を実行しない
@@ -28,15 +31,29 @@ const MessageList = () => {
       const [key ,nameAndText] = entry;//上の2行をまとめた書き方、配列に格納
       return {key , ...nameAndText};
     });
-    console.log(newMessages);
     setMessages(newMessages);
   });
   },[]);
   
+  const length = messages.length;
+
   return (
-    <div className={classes.root}>
-      MessageList
-    </div>
+    <List className={classes.root}>
+    {
+      messages.map(({key ,name ,text} , index) =>{
+
+        const isLastItem = length === index + 1;
+        return (
+          <MessageItem 
+            key={key} 
+            name={name} 
+            text={text}
+            isLastItem={isLastItem}
+          />
+        )
+      })//map関数でオブジェクトに含まれる複数のキーを渡したい場合、引数を{}で囲い、,,で区切る
+    }
+    </List>
   )
 }
 
