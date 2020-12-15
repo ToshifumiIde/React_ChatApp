@@ -15,7 +15,7 @@ const useStyles = makeStyles(() => ({
     },
   }));
 
-const messageItem = ({ name , text ,isLastItem}) => {
+const MessageItem = ({ name , text ,isLastItem}) => {
   const classes = useStyles();
   const avatarPath = gravatarPath(name);
   const ref = useRef(null);
@@ -23,7 +23,7 @@ const messageItem = ({ name , text ,isLastItem}) => {
   useEffect(()=>{
     if(isLastItem){
       //messageの最後にスクロールする処理を実装
-      ref.current.scrollInToView({ behavior:"smooth"});
+      ref.current.scrollIntoView({ behavior:"smooth"});
     }
   },[isLastItem]);//isLastItemのstatusに変更があった場合（false=>true）
 
@@ -50,4 +50,4 @@ const messageItem = ({ name , text ,isLastItem}) => {
   )
 };
 
-export default messageItem;
+export default MessageItem;
